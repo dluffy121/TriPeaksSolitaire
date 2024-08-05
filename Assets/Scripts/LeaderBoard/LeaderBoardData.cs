@@ -29,8 +29,9 @@ namespace TriPeaks
             else
                 _lstScoreData.Add(scoreData);
 
-            // Sorting in descending by more score and less moves;
-            _lstScoreData.OrderByDescending(x => x.Score - x.Moves);
+            _lstScoreData = _lstScoreData.OrderBy(x => x.Moves).ToList();
+
+            _highScoreData = _lstScoreData[0];
         }
     }
 }
