@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 4018329602735810735}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -102,6 +102,7 @@ MonoBehaviour:
   - {fileID: 3277585977496398526}
   - {fileID: 9060031564293155325}
   _faceUpCards: 10
+  _winCollectCount: 28
   _cardPlaceDuration: 0.1
   _cardPlaceDurationIncrement: 0.05
 --- !u!1001 &34332535673141416
