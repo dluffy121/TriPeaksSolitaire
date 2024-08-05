@@ -89,6 +89,7 @@ namespace TriPeaks
         private void DeductScore(float score)
         {
             _totalScore -= score;
+            UIGameHUD.SetScore(_totalScore.ToString());
         }
 
         #endregion
