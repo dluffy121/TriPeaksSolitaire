@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace TriPeaks
 {
@@ -10,14 +11,21 @@ namespace TriPeaks
     /// https://solitaired.com/free-games/tripeaks
     /// The simple referencing of parents and children makes this possible
     /// <remarks/>
-    public class TriPeaksNode : MonoBehaviour
+    public class TriPeaksNode : MonoBehaviour, IPointerClickHandler
     {
+        #region Serialized Variables
+
         [SerializeField] TriPeaksNode[] _parents;
         [SerializeField] TriPeaksNode[] _children;
 
-        Card _card;
+        #endregion
 
+        #region Member Variables
+
+        Card _card;
         bool _isOccupied;
+
+        #endregion
 
         /// <summary>
         /// Place a card on this Node
@@ -53,10 +61,10 @@ namespace TriPeaks
                 parent.TryUnfoldCard();
         }
 
-        private void OnMouseDown()
+        public void OnPointerClick(PointerEventData eventData)
         {
             if (_card.IsFolded
-                || !TriPeaksManager.TryCollectCard(_card))
+               || !TriPeaksManager.TryCollectCard(_card))
                 return;
 
             OnCollectCard();

@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 
 namespace TriPeaks
 {
     /// <summary>
     /// This class represents the remaining cards stock pile and also helps setup the TriPeaks
     /// </summary>
-    public class StockPile : MonoBehaviour
+    public class StockPile : MonoBehaviour, IPointerClickHandler
     {
         static StockPile s_instance;
 
@@ -49,7 +50,7 @@ namespace TriPeaks
             s_instance = null;
         }
 
-        private void OnMouseDown()
+        public void OnPointerClick(PointerEventData eventData)
         {
             DrawFromDeck();
         }
