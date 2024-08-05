@@ -12,7 +12,6 @@ namespace TriPeaks
         #region Serialized Variables
 
         [SerializeField] private float _scoreOnCollect;
-        [SerializeField] private string _saveFilePath;
 
         #endregion
 
@@ -57,6 +56,8 @@ namespace TriPeaks
 
         #endregion
 
+        #region Private Methods
+
         private void Internal_Initialize()
         {
             TriPeaksManager.OnCardCollected += AddMove;
@@ -89,5 +90,7 @@ namespace TriPeaks
         {
             _totalScore -= score;
         }
+
+        #endregion
     }
 }
