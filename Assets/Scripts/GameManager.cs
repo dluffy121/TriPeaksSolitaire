@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace TriPeaks
@@ -65,6 +66,11 @@ namespace TriPeaks
             s_instance._isGameRunning = false;
             ScoreData newData = new(s_instance._gameStartTime, ScoreManager.TotalScore, ScoreManager.TotalMoves, s_instance._timer);
             UIGameEnd.Show(newData);
+        }
+
+        public static void RestartGame()
+        {
+            SceneManager.LoadScene("Game", LoadSceneMode.Single);
         }
 
         #endregion
