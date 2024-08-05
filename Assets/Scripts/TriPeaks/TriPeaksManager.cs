@@ -93,6 +93,7 @@ namespace TriPeaks
             yield return new WaitForSeconds(waitDuration);
 
             GameManager.StartGame();
+            StockPile.UpdateVisuals();
         }
 
         private void UnfoldInitialCards()

@@ -136,8 +136,9 @@ MonoBehaviour:
   _cardSpriteDatabase: {fileID: 11400000, guid: 26c66f758ea078e419f16c4dfa0b7190, type: 2}
   _collider: {fileID: 5899876533864274820}
   _deckRenderer: {fileID: 1644114238268020759}
+  _stockPileText: {fileID: 1576336445461447785}
   _newDeckCost: 5
-  _buyDeckText: {fileID: 1576336445461447785}
+  _buyMoreStrFormat: Buy New Deck<br>-{0:F0}
 --- !u!61 &5899876533864274820
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -195,12 +196,12 @@ GameObject:
   - component: {fileID: 592342531103674437}
   - component: {fileID: 1576336445461447785}
   m_Layer: 0
-  m_Name: Buy More
+  m_Name: StockPileText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7950988508106367883
 RectTransform:
   m_ObjectHideFlags: 0
@@ -334,16 +335,16 @@ MonoBehaviour:
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
-  m_parseCtrlCharacters: 1
+  m_parseCtrlCharacters: 0
   m_isOrthographic: 0
   m_isCullingEnabled: 0
   m_horizontalMapping: 0
   m_verticalMapping: 0
   m_uvLineOffset: 0
   m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
+  m_IsTextObjectScaleStatic: 1
   m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
+  m_useMaxVisibleDescender: 0
   m_pageToDisplay: 1
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0

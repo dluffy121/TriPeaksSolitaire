@@ -22,10 +22,11 @@ namespace TriPeaks
 
         [Header("Visuals")]
         [SerializeField] SpriteRenderer _deckRenderer;
+        [SerializeField] TextMeshPro _stockPileText;
 
         [Header("New Deck")]
         [SerializeField] float _newDeckCost;
-        [SerializeField] TextMeshPro _buyDeckText;
+        [SerializeField] string _buyMoreStrFormat;
 
         #endregion
 
@@ -76,6 +77,9 @@ namespace TriPeaks
         public static bool TryDrawCard(out Card card)
             => s_instance.Internal_TryDrawCard(out card);
 
+        public static void UpdateVisuals()
+            => s_instance.Internal_UpdateVisuals();
+
         #endregion
 
         #region Private Methods
@@ -110,26 +114,23 @@ namespace TriPeaks
             _currentDeck = new(_cardPrefab, _cardsParent, _cardSpriteDatabase);
             _decks.Add(_currentDeck);
 
-            ResetVisuals();
+            UpdateVisuals();
 
             OnBuyNewDeck?.Invoke(_newDeckCost);
         }
 
-        private void UpdateVisuals()
+        private void Internal_UpdateVisuals()
         {
-            if (_currentDeck.CardCount > 0) return;
-
-            _deckRenderer.color += new Color(0, 0, 0, -0.5f);
-
-            _buyDeckText.gameObject.SetActive(true);
-            _buyDeckText.text = "Buy New Deck\n- " + _newDeckCost;
-        }
-
-        private void ResetVisuals()
-        {
-            _deckRenderer.color = Color.white;
-
-            _buyDeckText.gameObject.SetActive(false);
+            if (_currentDeck.CardCount > 0)
+            {
+                _stockPileText.text = _currentDeck.CardCount.ToString();
+                _deckRenderer.color = Color.white;
+            }
+            else
+            {
+                _stockPileText.text = string.Format(_buyMoreStrFormat, _newDeckCost);
+                _deckRenderer.color -= new Color(0, 0, 0, -0.5f);
+            }
         }
 
         #endregion
