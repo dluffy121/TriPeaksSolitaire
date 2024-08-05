@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace TriPeaks
 {
@@ -10,8 +11,8 @@ namespace TriPeaks
     /// </summary>
     public class LeaderBoardData
     {
-        List<ScoreData> _lstScoreData;
-        ScoreData _highScoreData;
+        [SerializeField] List<ScoreData> _lstScoreData;
+        [SerializeField] ScoreData _highScoreData;
 
         public List<ScoreData> LstScoreData => _lstScoreData;
         public ScoreData HighScoreDat => _highScoreData;

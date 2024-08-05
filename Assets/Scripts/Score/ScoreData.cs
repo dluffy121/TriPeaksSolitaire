@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace TriPeaks
 {
@@ -8,10 +9,10 @@ namespace TriPeaks
     /// </summary>
     public class ScoreData
     {
-        string _startTime;
-        float _score;
-        int _moves;
-        float _time;
+        [SerializeField] string _startTime;
+        [SerializeField] float _score;
+        [SerializeField] int _moves;
+        [SerializeField] float _time;
 
         public string StartTime => _startTime;
         public float Score => _score;
