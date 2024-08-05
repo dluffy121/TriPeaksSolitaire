@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -383,6 +384,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 1
 --- !u!224 &1079917009 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7447493568150101445, guid: 8b0795f4b7885724cb4f7583f883ddef, type: 3}
@@ -666,6 +683,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2118177451}
     m_Modifications:
+    - target: {fileID: 2248727739665770616, guid: 8b0795f4b7885724cb4f7583f883ddef, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4283731016735475005, guid: 8b0795f4b7885724cb4f7583f883ddef, type: 3}
       propertyPath: m_Name
       value: GameEnd
@@ -919,7 +940,6 @@ SceneRoots:
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 1765284792}
-  - {fileID: 2118177451}
   - {fileID: 1010491751576552853}
   - {fileID: 2021006862472154928}
   - {fileID: 1131591581588757162}
@@ -928,3 +948,4 @@ SceneRoots:
   - {fileID: 4726699814565047299}
   - {fileID: 6823826677746006538}
   - {fileID: 1948105553}
+  - {fileID: 2118177451}
