@@ -26,6 +26,7 @@ namespace TriPeaks
 
         private void Awake()
         {
+            new Logger(); // To initialize out logger
             s_instance = this;
         }
 
