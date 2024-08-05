@@ -968,9 +968,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7447493568150101445}
+  - component: {fileID: 1367592566051223763}
   - component: {fileID: 4124679781401008863}
   - component: {fileID: 8048200530497073787}
-  - component: {fileID: 1367592566051223763}
+  - component: {fileID: 6544315887218572591}
   m_Layer: 5
   m_Name: GameEnd
   m_TagString: Untagged
@@ -999,6 +1000,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1367592566051223763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4283731016735475005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e254e2bf29c29234c9717442f3762d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvas: {fileID: 4124679781401008863}
+  _graphicRaycaster: {fileID: 8048200530497073787}
+  _canvasGroup: {fileID: 6544315887218572591}
+  _leaderBoardEntryStrFormat: '{0:D}:<space=25>{1}<space=45>{2:F0}<space=45>{3:D}<space=45>{4}'
+  _leaderBoardEntryPrefab: {fileID: 6199926654484015029, guid: 93726e03b98e1ff4eab1563b199036a1, type: 3}
+  _leaderBoardEntryParent: {fileID: 2248727739665770616}
+  _fadeDuration: 1
 --- !u!223 &4124679781401008863
 Canvas:
   m_ObjectHideFlags: 0
@@ -1039,23 +1059,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1367592566051223763
-MonoBehaviour:
+--- !u!225 &6544315887218572591
+CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4283731016735475005}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e254e2bf29c29234c9717442f3762d10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _canvas: {fileID: 4124679781401008863}
-  _graphicRaycaster: {fileID: 8048200530497073787}
-  _leaderBoardEntryStrFormat: '{0:D}:<space=25>{1}<space=45>{2:F0}<space=45>{3:D}<space=45>{4}'
-  _leaderBoardEntryPrefab: {fileID: 6199926654484015029, guid: 93726e03b98e1ff4eab1563b199036a1, type: 3}
-  _leaderBoardEntryParent: {fileID: 2248727739665770616}
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4613875643470962196
 GameObject:
   m_ObjectHideFlags: 0

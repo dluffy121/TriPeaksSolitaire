@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,10 +18,14 @@ namespace TriPeaks
 
         [SerializeField] Canvas _canvas;
         [SerializeField] GraphicRaycaster _graphicRaycaster;
+        [SerializeField] CanvasGroup _canvasGroup;
 
         [SerializeField, TextArea] string _leaderBoardEntryStrFormat;
         [SerializeField] TextMeshProUGUI _leaderBoardEntryPrefab;
         [SerializeField] Transform _leaderBoardEntryParent;
+
+        [Header("Animation")]
+        [SerializeField] float _fadeDuration = 1f;
 
         #endregion
 
@@ -44,9 +49,25 @@ namespace TriPeaks
 
         #region Static Members
 
+        /// <summary>
+        /// Shows this UI
+        /// </summary>
+        /// <param name="newData">Current Games Score Data</param>
         public static void Show(ScoreData newData)
         {
             s_instance.Internal_Show(newData);
+        }
+
+        #endregion
+
+        #region Interactions
+
+        /// <summary>
+        /// Called when Play Again button is clicked
+        /// </summary>
+        public void OnBtnClicked_PlayAgain()
+        {
+            StartCoroutine(IEFadeUI(0, GameManager.RestartGame));
         }
 
         #endregion
@@ -61,7 +82,25 @@ namespace TriPeaks
             LeaderBoardManager.LoadLeaderBoard();
             LeaderBoardManager.SaveToLeaderBoard(newData);
 
-            PopulateLeaderBoardEntries();
+            StartCoroutine(IEFadeUI(1, PopulateLeaderBoardEntries));
+        }
+
+        private IEnumerator IEFadeUI(float target, Action onComplete = null)
+        {
+            float timer = 0;
+
+            while (timer < _fadeDuration)
+            {
+                _canvasGroup.alpha = Mathf.Lerp(_canvasGroup.alpha, target, timer / _fadeDuration);
+
+                timer += Time.deltaTime;
+
+                yield return new WaitForEndOfFrame();
+            }
+
+            _canvasGroup.alpha = target;
+
+            onComplete?.Invoke();
         }
 
         private void PopulateLeaderBoardEntries()
@@ -81,15 +120,6 @@ namespace TriPeaks
                     data.Moves,
                     string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds));
             }
-        }
-
-        #endregion
-
-        #region Interactions
-
-        public void OnBtnClicked_PlayAgain()
-        {
-            SceneManager.LoadScene("Game", LoadSceneMode.Single);
         }
 
         #endregion
