@@ -55,13 +55,13 @@ namespace TriPeaks
 
         private void Internal_Show(ScoreData newData)
         {
+            _canvas.enabled = true;
+            _graphicRaycaster.enabled = true;
+
             LeaderBoardManager.LoadLeaderBoard();
             LeaderBoardManager.SaveToLeaderBoard(newData);
 
             PopulateLeaderBoardEntries();
-
-            _canvas.enabled = true;
-            _graphicRaycaster.enabled = true;
         }
 
         private void PopulateLeaderBoardEntries()
