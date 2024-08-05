@@ -9,9 +9,9 @@ namespace TriPeaks
     /// </summary>
     public class Logger : ILogHandler
     {
-        private FileStream m_FileStream;
-        private StreamWriter m_StreamWriter;
-        private ILogHandler m_DefaultLogHandler = Debug.unityLogger.logHandler;
+        private readonly FileStream _fileStream;
+        private readonly StreamWriter _streamWriter;
+        private readonly ILogHandler _defaultLogHandler = Debug.unityLogger.logHandler;
 
         public Logger()
         {
@@ -20,22 +20,29 @@ namespace TriPeaks
             if (File.Exists(filePath))
                 File.Delete(filePath);
 
-            m_FileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            m_StreamWriter = new StreamWriter(m_FileStream);
+            _fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            _streamWriter = new StreamWriter(_fileStream);
 
+            // Replace the default debug log handler
             Debug.unityLogger.logHandler = this;
+        }
+
+        ~Logger()
+        {
+            _streamWriter.Close();
+            _fileStream.Close();
         }
 
         public void LogFormat(LogType logType, UnityEngine.Object context, string format, params object[] args)
         {
-            m_StreamWriter.WriteLine(string.Format(format, args));
-            m_StreamWriter.Flush();
-            m_DefaultLogHandler.LogFormat(logType, context, format, args);
+            _streamWriter.WriteLine(string.Format(format, args));
+            _streamWriter.Flush();
+            _defaultLogHandler.LogFormat(logType, context, format, args);
         }
 
         public void LogException(Exception exception, UnityEngine.Object context)
         {
-            m_DefaultLogHandler.LogException(exception, context);
+            _defaultLogHandler.LogException(exception, context);
         }
     }
 }
