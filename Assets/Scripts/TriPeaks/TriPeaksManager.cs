@@ -60,6 +60,7 @@ namespace TriPeaks
         {
             if (!CanCollectCard(card)) return false;
 
+            SoundPlayer.PlayCardPlaceSFX();
             WastePile.Add(card);
 
             _winCollectCount--;

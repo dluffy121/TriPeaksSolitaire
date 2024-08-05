@@ -102,6 +102,7 @@ namespace TriPeaks
             }
 
             card.Unfold();
+            SoundPlayer.PlayCardFlipSFX();
             WastePile.Add(card);
 
             OnDrawnFromDeck?.Invoke();
@@ -116,6 +117,7 @@ namespace TriPeaks
 
             UpdateVisuals();
 
+            SoundPlayer.PlayDeckPlaceSFX();
             OnBuyNewDeck?.Invoke(_newDeckCost);
         }
 
