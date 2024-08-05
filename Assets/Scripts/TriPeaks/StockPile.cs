@@ -122,7 +122,7 @@ namespace TriPeaks
             _deckRenderer.color += new Color(0, 0, 0, -0.5f);
 
             _buyDeckText.gameObject.SetActive(true);
-            _buyDeckText.text = "Buy New Deck/n-" + _newDeckCost;
+            _buyDeckText.text = "Buy New Deck\n- " + _newDeckCost;
         }
 
         private void ResetVisuals()
